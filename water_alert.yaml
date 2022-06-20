@@ -29,7 +29,7 @@ blueprint:
       description: Message to speak when the sensor reaches the specified value
     media_player:
       name: Media Player
-      description: Media player through wich to speak the message
+      description: Media player through which to speak the message
       selector:
         entity:
           domain: media_player
