@@ -15,10 +15,15 @@ blueprint:
       selector:
         entity:
           domain: sensor
+          device_class: humidity
+          integration: ecowitt
     minimum:
       name: Trigger threshold
       description: Soil water percent at which to trigger      
-      type: int
+      selector:
+        number:
+          min: 1
+          max: 100
     message:
       name: message
       description: Message to speak when the sensor reaches the specified value
