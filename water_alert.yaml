@@ -8,7 +8,7 @@ blueprint:
       description: Your Ecowitt Gateway
       selector:
         device:
-          manufacturer: Ecowitt
+          integration: ecowitt
     moisture_sensor:
       name: Moisture sensor
       description: Sensor to monitor
@@ -32,6 +32,8 @@ blueprint:
       selector:
         entity:
           domain: media_player
+          description: Media player through wich to speak the message
+
 
 trigger:
   - type: humidity
