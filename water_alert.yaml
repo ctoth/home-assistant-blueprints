@@ -1,0 +1,45 @@
+blueprint:
+  name: Water Monitor
+  description: Speak a message with TTS when a moisture sensor reaches a specified value
+  domain: automation
+  input:
+    weather_station:
+      name: Weather station
+      description: Your Ecowitt Gateway
+      selector:
+        device:
+          manufacturer: Ecowitt
+    moisture_sensor:
+      name: Moisture sensor
+      description: Sensor to monitor
+      selector:
+        entity:
+          domain: sensor
+    minimum:
+      name: Trigger threshold
+      description: Soil water percent at which to trigger      
+      type: int
+    message:
+      name: message
+      description: Message to speak when the sensor reaches the specified value
+    media_player:
+      name: Media Player
+      selector:
+        entity:
+          domain: media_player
+
+trigger:
+  - type: humidity
+    platform: device
+    device_id: !input weather_station
+    entity_id: !input moisture_sensor
+    domain: sensor
+    below: !input minimum
+
+
+action:
+  - service: tts.cloud_say
+    data:
+      entity_id: !input media_player
+      message: !input message
+mode: single
