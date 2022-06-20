@@ -19,7 +19,7 @@ blueprint:
           integration: ecowitt
     minimum:
       name: Trigger threshold
-      description: Soil water percent at which to trigger      
+      description: Soil water percent at which to trigger
       selector:
         number:
           min: 1
@@ -29,11 +29,10 @@ blueprint:
       description: Message to speak when the sensor reaches the specified value
     media_player:
       name: Media Player
+      description: Media player through wich to speak the message
       selector:
         entity:
           domain: media_player
-          description: Media player through wich to speak the message
-
 
 trigger:
   - type: humidity
@@ -42,7 +41,6 @@ trigger:
     entity_id: !input moisture_sensor
     domain: sensor
     below: !input minimum
-
 
 action:
   - service: tts.cloud_say
